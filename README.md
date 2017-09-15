@@ -1,2 +1,2 @@
 # android-SQLiteExample
-A simle android app demonstrating the use of SQLite database
+A simple android app demonstrating the use of SQLite database for registration login page.
