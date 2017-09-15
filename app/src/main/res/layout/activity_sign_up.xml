@@ -8,28 +8,29 @@
 
 
     <EditText
-        android:id="@+id/edt_username"
+        android:id="@+id/edt_name_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username" />
+        android:hint="name"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/edt_password"
+        android:id="@+id/edt_email_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edt_password_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
         android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/edt_conf_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="confirm password"
-        android:inputType="textPassword" />
-
     <Button
-        android:layout_width="match_parent"
         android:id="@+id/btn_signup_reg"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="signup" />
 </LinearLayout>

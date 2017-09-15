@@ -9,16 +9,17 @@
     tools:context="jayantb95.databaseexample.activity.LoginActivity">
 
     <EditText
-        android:id="@+id/edtUsername"
-        android:layout_width="wrap_content"
+        android:id="@+id/edt_email_login"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username" />
+        android:hint="email"
+        android:inputType="textEmailAddress" />
 
     <EditText
+        android:id="@+id/edt_password_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
-        android:id="@+id/edtPassword"
         android:inputType="textPassword" />
 
     <Button
@@ -28,9 +29,9 @@
         android:text="login" />
 
     <Button
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_link_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="signup" />
+        android:text="register" />
 
 </LinearLayout>

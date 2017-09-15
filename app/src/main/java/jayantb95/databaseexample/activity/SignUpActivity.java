@@ -14,9 +14,9 @@ import jayantb95.databaseexample.other.DatabaseAdapter;
 public class SignUpActivity extends AppCompatActivity {
 
     private Button btnSignup;
-    private EditText edtUsernameSignup;
+    private EditText edtNameSignup;
+    private EditText edtEmailSignup;
     private EditText edtPasswordSignup;
-    private EditText edtConfPasswordSignup;
     private DatabaseAdapter mDatabaseAdapter;
 
     @Override
@@ -30,9 +30,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void initialize() {
         btnSignup = (Button) findViewById(R.id.btn_signup_reg);
-        edtUsernameSignup = (EditText) findViewById(R.id.edt_username);
-        edtPasswordSignup = (EditText) findViewById(R.id.edt_password);
-        edtConfPasswordSignup = (EditText) findViewById(R.id.edt_conf_password);
+        edtNameSignup = (EditText) findViewById(R.id.edt_name_signup);
+        edtEmailSignup = (EditText) findViewById(R.id.edt_email_signup);
+        edtPasswordSignup = (EditText) findViewById(R.id.edt_password_signup);
 
         mDatabaseAdapter = new DatabaseAdapter(this);
         mDatabaseAdapter.open();
@@ -42,34 +42,37 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = edtUsernameSignup.getText().toString().trim();
+                String name = edtNameSignup.getText().toString().trim();
+                String email = edtEmailSignup.getText().toString().trim();
                 String password = edtPasswordSignup.getText().toString().trim();
-                String cnfPwd = edtConfPasswordSignup.getText().toString().trim();
 
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(SignUpActivity.this, "Enter username!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(SignUpActivity.this, "Enter name!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(SignUpActivity.this, "Enter email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(SignUpActivity.this, "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(SignUpActivity.this, "Enter password confirmation!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (!password.equals(cnfPwd)) {
-                    Toast.makeText(SignUpActivity.this, "passwords does not match!", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
                     //save in database
-                    mDatabaseAdapter.insertEntry(username, password);
-                    Toast.makeText(SignUpActivity.this, "account successfully created.", Toast.LENGTH_SHORT).show();
+                    mDatabaseAdapter.insertEntry(name, email, password);
+                    Toast.makeText(SignUpActivity.this, "account created successfully!", Toast.LENGTH_SHORT).show();
+                    clearAll();
                 }
+
             }
         });
 
+    }
+
+    private void clearAll() {
+        edtNameSignup.setText("");
+        edtEmailSignup.setText("");
+        edtPasswordSignup.setText("");
     }
 
     @Override
